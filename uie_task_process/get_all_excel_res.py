@@ -4,16 +4,14 @@ import shutil
 
 import pandas as pd
 
-def get_all_excel(trainval_folder,oup):
+def get_all_excel(trainval_folder,oup_excel):
     '''得到所有的预估结果excel'''
-    trainval_folder='workspace/short_doc/short_doc_0707_trainval'
-    oup='/mnt/disk0/youjiachen/workspace/yxj/uie_data_helper/val_res_vis'
-    Path(oup).mkdir(parents=True,exist_ok=True)
+    Path(oup_excel).mkdir(parents=True,exist_ok=True)
     excel_list=list(Path(trainval_folder).glob('**/[!.]*.xlsx'))
     for i in excel_list:
-        if '2023-07-24' in i.name:
-            pass
-            # shutil.copy(i,Path(oup)/(i.parent.parent.name+'.xlsx'))
+        shutil.copy(i,Path(oup_excel)/(i.parent.parent.name+'.xlsx'))
+        # if '2023-07-24' in i.name:
+        #     shutil.copy(i,Path(oup_excel)/(i.parent.parent.name+'.xlsx'))
             
 def get_all_val_res_vis():
     folder='workspace/short_doc/short_doc_0707_trainval'
@@ -58,6 +56,10 @@ if 0:
 
     
 if __name__ == '__main__':
+    '''得到所有场景评估结果表'''
     excels_folder='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/result/excel'
     scenes_merge_excel='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/result'
-    get_excel_merge(excels_folder,scenes_merge_excel)
+    # get_excel_merge(excels_folder,scenes_merge_excel)
+    
+    '''得到可视化结果汇总'''
+    pass

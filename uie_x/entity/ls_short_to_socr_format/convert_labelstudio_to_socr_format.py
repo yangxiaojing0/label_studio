@@ -378,6 +378,42 @@ def main():
         )
         os.system('rm -r download_images')
 
+'''usage for scenes'''
+def usage(data_dir,output_file):
+    # create out dir
+    Path.mkdir(Path(output_file), exist_ok=True)
+
+    # 同目录下添加 model.xlsx表格（带表格列名），映射场景（和文件夹下json文件同名）到识别模型
+    model_config = pd.read_excel(io=data_dir + '/model.xlsx')
+    data_dir = data_dir
+    scene_model = {}
+    for row in model_config.iterrows():
+        scene_model[row[1][0]] = row[1][1]
+    for label in os.listdir(data_dir):
+        if isinstance(label, str) and not label.endswith(".json"):
+            continue
+        if os.path.isdir(os.path.join(data_dir, label)):
+            continue
+        output_path = os.path.join(output_file, label.split('.')[0])
+        if not os.path.exists(output_path):
+            os.mkdir(output_path)
+            # os.chdir(output_path)
+        pInput = os.path.join(data_dir, label)
+        print('scene:', label, 'nowuse:', scene_model[label.split('.json')[0]])
+        download_images(pInput, 'download_images')
+        convert_label(
+            os.path.join(data_dir, label),
+            output_path,
+            'download_images',
+            ocrmodel=scene_model[label.split('.json')[0]],
+        )
+        os.system('rm -r download_images')
+    
 
 if __name__ == '__main__':
-    main()
+    # main()
+    
+    '''多场景批量'''
+    data_dir='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/label_studio'
+    output_dir='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_ocr'
+    usage(data_dir,output_dir)
