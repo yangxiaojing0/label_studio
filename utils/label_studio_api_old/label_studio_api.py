@@ -5,9 +5,8 @@ from pathlib import Path
 
 import requests
 import yaml
-from tqdm import tqdm
-
 from crop_and_recog import long_text_crop_and_recog, short_text_crop_and_recog
+from tqdm import tqdm
 
 
 class LabelStudioApi:
@@ -42,13 +41,15 @@ class LabelStudioApi:
         Returns:
             配置文件的内容
         """
+        template_long_path = r'F:\desk\program\label_studio\utils\label_studio_api_old\template_long.yaml'
+        template_short_path = r'F:\desk\program\label_studio\utils\label_studio_api_old\template_short.yaml'
         with open(json_index, 'r', encoding='utf-8') as j:
             json_index_data = json.load(j)
         if list(json_index_data[0].keys())[0] == 'document':
-            with open('template_long.yaml', 'r', encoding='utf-8') as file:
+            with open(template_long_path, 'r', encoding='utf-8') as file:
                 config_template_data = yaml.load(file, Loader=yaml.FullLoader)
         if list(json_index_data[0].keys())[0] == 'Image':
-            with open('template_short.yaml', 'r', encoding='utf-8') as file:
+            with open(template_short_path, 'r', encoding='utf-8') as file:
                 config_template_data = yaml.load(file, Loader=yaml.FullLoader)
         return config_template_data
 
@@ -154,10 +155,12 @@ if __name__ == '__main__':
 
     '''创建任务,并导入初始化json文件'''
     if 1:
-        name = '短文档23-8 #买卖双方承诺书'
+        name = 'V4短文档 #法院文书-司法公开告知书'
         # label_id = 378  # 复制config标签
         description = ''
-        json_data_import = r'F:\desk\08-1标注数据\上传\data\maimaishuangfangchengnuoshu.json'
+        json_data_import = (
+            r'F:\desk\label_studio上传\pdf\fayuanwenshu-sifagongkaigaozhishu.json'
+        )
         label_studio_api.create_project(name, None, description, json_data_import)
 
     '''下载与回传'''
