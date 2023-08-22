@@ -40,13 +40,13 @@ def convert_data(datadir: Path, save_dir: Path):
 
 if __name__ == '__main__':
     '''单场景'''
-    datadir='/home/youjiachen/workspace/yxj/uie_task/0816_3scenes_task_ocr_convert_combine'
+    datadir='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert_combine'
     save_dir = Path(datadir) / 'dataelem_ocr_v2'
     convert_data(datadir, save_dir)
     
     '''多场景'''
-    # src = '/home/youjiachen/workspace/yxj/uie_task/0816_3scenes_task_ocr_convert'
-    # scene_list = list(Path(src).glob('[!.]*'))
+    src = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert'
+    scene_list = list(Path(src).glob('[!.]*'))
     # for scene in scene_list:
     #     datadir = scene
     #     save_dir = Path(datadir) / 'dataelem_ocr_v2'

@@ -448,7 +448,7 @@ def combine_label(dataset_folder):
 if __name__ == '__main__':
     data_path = '/Users/youjiachen/Desktop/projects/label_studio_mgr/UIE-X/entity/ocrstudio_to_socr_format/output/卡证表单23-7_道路运输证'
     save_path = '/Users/youjiachen/Desktop/projects/label_studio_mgr/UIE-X/entity/ocrstudio_to_socr_format/output/卡证表单23-7_道路运输证_convert'
-    convert_label(data_path, save_path, True)
+    # convert_label(data_path, save_path, True)
     # dataset_folder = '/home/public/ELLM_datasets/smart_structure_idcard_v2.0/增值税普票'
     # vis_image(dataset_folder)
 
@@ -459,5 +459,5 @@ if __name__ == '__main__':
     #     if not scene.startswith('.'):
     #         convert_label(os.path.join(dataset_folder, scene), os.path.join(save_folder, scene))
 
-    # dataset_folder = '/home/public/ELLM_datasets/smart_structure_idcard_doc_uie_v2.0'
-    # combine_label(dataset_folder)
+    dataset_folder = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert'
+    combine_label(dataset_folder)

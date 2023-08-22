@@ -62,16 +62,16 @@ if __name__ == '__main__':
     model_path = Path(scene_path)/'dataelem_ocr_v2/checkpoint/model_best'
     test_path = Path(scene_path)/'dataelem_ocr_v2/dev.txt'
     output_dir = model_path
-    uie_val(model_path, test_path, output_dir)
+    # uie_val(model_path, test_path, output_dir)
     
     '''获得每个场景评估excel'''
-    model_path = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert_combine/dataelem_ocr_v2/checkpoint/model_best'
-    data_path = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert'
-    # multi_val(model_path, data_path)
+    model_path = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert_combine/dataelem_ocr_v2/checkpoint/model_best'
+    data_path = '/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert'
+    multi_val(model_path, data_path)
     
     '''摘取所有excel'''
-    trainval_folder='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert'
-    oup_excel='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/result/excel'
+    trainval_folder='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert'
+    oup_excel='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/result'
     get_all_excel(trainval_folder,oup_excel)
     
     

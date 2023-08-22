@@ -27,7 +27,7 @@ def cv2AddChineseText(img, text, position, textColor=(0, 255, 0), textSize=30):
     draw = ImageDraw.Draw(img)
     # 字体的格式
     fontStyle = ImageFont.truetype(
-        os.path.join(os.path.dirname(__file__), '../simsun.ttc'),
+        os.path.join(os.path.dirname(__file__), './simsun.ttc'),
         textSize,
         encoding="utf-8",
     )
@@ -202,6 +202,11 @@ if __name__ == '__main__':
 
     # vis_prompt_label(args.data_folder, args.prompt_label_file, args.res_folder)
     
+    '''单场景错例分析'''
+    data_folder = r'/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert/起诉书'
+    prompt_label_file = r'/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert/起诉书/dataelem_ocr_v2/dev.txt'
+    res_folder = r'/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert/起诉书/val_res'
+    vis_prompt_label(data_folder, prompt_label_file, res_folder)
     
     '''多场景可视化错例分析图片'''
     def draw_img_for_error_analysis(scenes_folder):
@@ -212,8 +217,8 @@ if __name__ == '__main__':
             prompt_label_file=Path(i)/'dataelem_ocr_v2'/'dev.txt'
             res_folder=Path(i)/'val_res'
             vis_prompt_label(data_folder, prompt_label_file, res_folder)
-    scenes_folder='/home/youjiachen/workspace/ELLM_V3.0/test_output/返修后反而降低'
-    draw_img_for_error_analysis(scenes_folder)
+    scenes_folder='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert'
+    # draw_img_for_error_analysis(scenes_folder)
     
     
     

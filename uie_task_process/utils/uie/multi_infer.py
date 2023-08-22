@@ -32,8 +32,8 @@ if __name__ == '__main__':
     #     infer(model_path, val_path, keys)
         
     '''多场景评估, 获得验证集识别结果val_res'''
-    model_path='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert_combine/dataelem_ocr_v2/checkpoint/model_best'
-    scence_foler='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert'
+    model_path='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert_combine/dataelem_ocr_v2/checkpoint/model_best'
+    scence_foler='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_label_match_val/data/0817_23scenes_doc_convert'
     
     # 获得keys
     scence_list=list(Path(scence_foler).glob('[!.]*'))
