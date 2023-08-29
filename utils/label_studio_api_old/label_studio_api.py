@@ -155,12 +155,10 @@ if __name__ == '__main__':
 
     '''创建任务,并导入初始化json文件'''
     if 1:
-        name = 'V4短文档 #法院文书-司法公开告知书'
+        name = '公司章程'
         # label_id = 378  # 复制config标签
         description = ''
-        json_data_import = (
-            r'F:\desk\label_studio上传\pdf\fayuanwenshu-sifagongkaigaozhishu.json'
-        )
+        json_data_import = r'F:\desk\label_studio上传\gongsizhangcheng.json'
         label_studio_api.create_project(name, None, description, json_data_import)
 
     '''下载与回传'''

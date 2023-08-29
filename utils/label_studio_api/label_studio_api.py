@@ -7,9 +7,8 @@ from typing import Dict, List
 
 import requests
 import yaml
-from tqdm import tqdm
-
 from crop_and_recog import long_text_crop_and_recog, short_text_crop_and_recog
+from tqdm import tqdm
 
 
 class LabelStudioApi:
@@ -143,5 +142,9 @@ if __name__ == '__main__':
     label_studio_api = LabelStudioApi(ip, port, token)
 
     # 导出标注json文件
-    # label_studio_api.export_annotations(271, output_dir=f'./data')
-    label_studio_api.upload_recog(295)
+    task_id_list = [412,413,415,416,417,418]
+    for task_id in task_id_list:
+        label_studio_api.export_annotations(task_id, output_dir=f'./data/新增')
+
+    # 导入标注json文件
+    # label_studio_api.upload_recog(295)
