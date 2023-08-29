@@ -13,14 +13,11 @@ def get_all_excel(trainval_folder,oup_excel):
         # if '2023-07-24' in i.name:
         #     shutil.copy(i,Path(oup_excel)/(i.parent.parent.name+'.xlsx'))
             
-def get_all_val_res_vis():
-    folder='workspace/short_doc/short_doc_0707_trainval'
-    oup='/mnt/disk0/youjiachen/workspace/yxj/uie_data_helper/val_res_vis'
-    Path(oup).mkdir(parents=True,exist_ok=True)
-    val_list=list(Path(folder).glob('*/val_res'))
-    for i in val_list:
-        shutil.copytree(i,oup)
-            # shutil.copy(i,Path(oup)/(i.parent.parent.name+'.xlsx'))
+def get_all_val_res_vis(trainval_folder,save_path):
+    val_list=list(Path(trainval_folder).glob('*/vis_prompt_label'))
+    for scene_vis_prompt_label in val_list:
+        val_res_vis_save_path=Path(save_path)/scene_vis_prompt_label.parent.name
+        shutil.copytree(scene_vis_prompt_label,val_res_vis_save_path)
             
 def get_uie_task_res():
     trainval_folder=''
@@ -61,5 +58,11 @@ if __name__ == '__main__':
     scenes_merge_excel='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/result'
     # get_excel_merge(excels_folder,scenes_merge_excel)
     
-    '''得到可视化结果汇总'''
+    '''得到所有场景评估merge excel'''
     pass
+
+    '''得到可视化结果汇总'''
+    trainval_folder='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/data/0817_23scenes_doc_convert'
+    save_path='/home/youjiachen/workspace/yxj/uie_task/0817_23scenes_doc/result/val_res_vis'
+    get_all_val_res_vis(trainval_folder,save_path)
+    
